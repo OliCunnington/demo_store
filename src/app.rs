@@ -5,6 +5,8 @@ use leptos_router::{
     StaticSegment,
 };
 
+use crate::storefront;
+
 pub fn shell(options: LeptosOptions) -> impl IntoView {
     view! {
         <!DOCTYPE html>
@@ -63,6 +65,7 @@ fn StorePage() -> impl IntoView {
     view!{
         <h1>"Store"</h1>
         <AppNav/>
+        <storefont::product_cards::ProductCardLayout/>
     }
 }
 

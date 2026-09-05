@@ -3,3 +3,9 @@ body {
 	text-align: center;
 	color: red;
 }
+
+.prod_list {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px; /* Optional: adds space between items */
+}
