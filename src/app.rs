@@ -54,10 +54,7 @@ pub fn App() -> impl IntoView {
 fn HomePage() -> impl IntoView {
     view! {
         <h1>"Welcome to the shop!"</h1>
-        <nav>
-            <a href="/store">"Store"</a>
-            <a href="/control_panel">"Control Panel"</a>
-        </nav>
+        <AppNav/>
     }
 }
 
@@ -65,10 +62,7 @@ fn HomePage() -> impl IntoView {
 fn StorePage() -> impl IntoView {
     view!{
         <h1>"Store"</h1>
-        <nav>
-            <a href="/store">"Store"</a>
-            <a href="/control_panel">"Control Panel"</a>
-        </nav>
+        <AppNav/>
     }
 }
 
@@ -76,7 +70,14 @@ fn StorePage() -> impl IntoView {
 fn ControlPage() -> impl IntoView {
     view!{
         <h1>"Control Panel"</h1>
-        <nav>
+        <AppNav/>
+    }
+}
+
+#[component]
+fn AppNav() -> impl IntoView {
+    view!{
+        <nav id="app_nav">
             <a href="/store">"Store"</a>
             <a href="/control_panel">"Control Panel"</a>
         </nav>
