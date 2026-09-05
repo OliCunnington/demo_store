@@ -1,4 +1,6 @@
 pub mod app;
+pub mod storefront;
+// pub mod control_panel;
 
 #[cfg(feature = "hydrate")]
 #[wasm_bindgen::prelude::wasm_bindgen]

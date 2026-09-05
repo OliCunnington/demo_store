@@ -1,4 +1,5 @@
 use leptos::prelude::*;
+// use leptos_router::components::{Outlet, A};
 
 #[derive(Clone)]
 struct Product {
@@ -13,18 +14,18 @@ struct Product {
 #[component]
 fn ProductCard(p: Product) -> impl IntoView {
     view!{
-        <A class="prod_card" href={p.key.clone()}>
+        <a class="prod_card" href={p.key.clone()}>
             <p>{p.name}</p>
             <p>{p.description}</p>
             <p>{p.price}</p>
             <p>"- 0 +"</p>
             <p>{p.stock}</p>
-        </A>
+        </a>
     }
 }
 
 #[component]
-fn ProductCardLayout -> impl IntoView {
+pub fn ProductCardLayout() -> impl IntoView {
     let prods = vec![
         Product {
             key: 1,
@@ -81,7 +82,7 @@ fn ProductCardLayout -> impl IntoView {
         // 3x3 grid of prod cards...
         <ul class="prod_list">
             {prods.into_iter()
-                .map(|pr| view {
+                .map(|pr| view! {
                     <li><ProductCard p=pr /></li>
                 })
                 .collect_view()
