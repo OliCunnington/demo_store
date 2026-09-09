@@ -80,6 +80,7 @@ fn ControlPage() -> impl IntoView {
     view!{
         <h1>"Control Panel"</h1>
         <AppNav/>
+        <control_panel::ProductControlView/>
     }
 }
 
