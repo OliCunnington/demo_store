@@ -1,5 +1,6 @@
 use leptos::prelude::*;
-// use leptos_router::components::{Outlet, A};
+use leptos_router::components::Outlet;
+use leptos_router::params::Params;
 
 #[derive(Clone)]
 struct Product {
@@ -10,22 +11,39 @@ struct Product {
     stock: i32
 }
 
-
 #[component]
-fn ProductCard(p: Product) -> impl IntoView {
+fn ProductRow(p: Product) -> impl IntoView {
+    
+    let selected = use_context::<ReadSignal<String>>();
     view!{
-        <a class="prod_card" href={p.key.clone()}>
-            <p>{p.name}</p>
-            <p>{p.description}</p>
-            <p>{p.price}</p>
-            <p>"- 0 +"</p>
-            <p>{p.stock}</p>
-        </a>
+        <li>
+            <a href={p.key.clone()} 
+                >
+                <div class="prod_row">
+                    <p>{p.name}</p>
+                    <p>{p.stock}</p>
+                    <p>{p.price}</p>
+                    // need buttons... 
+                </div>
+            </a>
+            <Show
+                when=move || { selected.read().expect("Some string?").to_string() == p.key }
+                fallback= || view! {}
+            >
+                <Outlet/>
+            </Show>
+        </li>
+    }
+}
+
+pub fn ProductExpanded() -> impl IntoView {
+    view!{
+        <p>"Placeholder"</p>
     }
 }
 
 #[component]
-pub fn ProductCardLayout() -> impl IntoView {
+pub fn ProductControlView() -> impl IntoView {
     let prods = vec![
         Product {
             key: "AAA".to_string(),
@@ -79,11 +97,10 @@ pub fn ProductCardLayout() -> impl IntoView {
     ];
 
     view!{
-        // 3x3 grid of prod cards...
-        <ul class="prod_list">
+        <ul>
             {prods.into_iter()
                 .map(|pr| view! {
-                    <li><ProductCard p=pr /></li>
+                    <li><ProductRow p=pr /></li>
                 })
                 .collect_view()
             }

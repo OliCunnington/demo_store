@@ -1,11 +1,13 @@
 use leptos::prelude::*;
 use leptos_meta::{provide_meta_context, MetaTags, Stylesheet, Title};
 use leptos_router::{
-    components::{Route, Router, Routes},
+    components::{Route, Router, Routes, ParentRoute},
     StaticSegment,
+    path
 };
 
 use crate::storefront::product_cards;
+use crate::control_panel::control_panel;
 
 pub fn shell(options: LeptosOptions) -> impl IntoView {
     view! {
@@ -44,7 +46,10 @@ pub fn App() -> impl IntoView {
                 <Routes fallback=|| "Page not found.".into_view()>
                     <Route path=StaticSegment("") view=HomePage/>
                     <Route path=StaticSegment("/store") view=StorePage/>
-                    <Route path=StaticSegment("/control_panel") view=ControlPage/>
+                    <ParentRoute path=StaticSegment("/control_panel") view=ControlPage>
+                        <Route path=path!(":id") view=control_panel::ProductExpanded />
+                        <Route path=path!("/*any") view=|| view! { <h1>"Not Found"</h1> }/>
+                    </ParentRoute>
                 </Routes>
             </main>
         </Router>
@@ -57,6 +62,7 @@ fn HomePage() -> impl IntoView {
     view! {
         <h1>"Welcome to the shop!"</h1>
         <AppNav/>
+        <control_panel::ProductControlView/>
     }
 }
 
