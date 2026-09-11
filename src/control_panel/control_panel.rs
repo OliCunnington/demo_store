@@ -1,6 +1,7 @@
 use leptos::prelude::*;
 use leptos_router::components::Outlet;
 use leptos_router::params::Params;
+use leptos_router::hooks::use_params_map;
 
 #[derive(Clone)]
 struct Product {
@@ -14,11 +15,20 @@ struct Product {
 #[component]
 fn ProductRow(p: Product) -> impl IntoView {
     
-    let selected = use_context::<ReadSignal<String>>();
+    let params = use_params_map();
+    let id = move || params.read().get("id");
+    let key = p.key.clone();
+    let val = p.key.clone();
+    // let selected = use_context::<ReadSignal<String>>();
     view!{
         <li>
-            <a href={p.key.clone()} 
-                >
+            <a href={move || 
+                if id().unwrap_or_default() == val {
+                    val.clone() + "/.."
+                } else {
+                    val.clone()
+                }
+            }>
                 <div class="prod_row">
                     <p>{p.name}</p>
                     <p>{p.stock}</p>
@@ -27,7 +37,7 @@ fn ProductRow(p: Product) -> impl IntoView {
                 </div>
             </a>
             <Show
-                when=move || { selected.read().expect("Some string?").to_string() == p.key }
+                when=move || { id().unwrap_or_default() == p.key.clone() }
                 fallback= || view! {}
             >
                 <Outlet/>

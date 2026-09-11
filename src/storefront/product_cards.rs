@@ -14,7 +14,7 @@ struct Product {
 #[component]
 fn ProductCard(p: Product) -> impl IntoView {
     view!{
-        <a class="prod_card" href={p.key.clone()}>
+        <a class="prod_card" href="store/".to_string()+{&p.key.clone()}>
             <p>{p.name}</p>
             <p>{p.description}</p>
             <p>{p.price}</p>

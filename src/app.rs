@@ -44,12 +44,13 @@ pub fn App() -> impl IntoView {
         <Router>
             <main>
                 <Routes fallback=|| "Page not found.".into_view()>
-                    <Route path=StaticSegment("") view=HomePage/>
+                    <Route path=StaticSegment("/") view=HomePage/>
                     <Route path=StaticSegment("/store") view=StorePage/>
                     <ParentRoute path=StaticSegment("/control_panel") view=ControlPage>
                         <Route path=path!(":id") view=control_panel::ProductExpanded />
-                        <Route path=path!("/*any") view=|| view! { <h1>"Not Found"</h1> }/>
+                        // <Route path=path!("/*any") view=|| view! { <h1>"Not Found"</h1> }/>
                     </ParentRoute>
+                    <Route path=path!("/*any") view=|| view! { <h1>"Not Found"</h1> }/>
                 </Routes>
             </main>
         </Router>
@@ -62,7 +63,7 @@ fn HomePage() -> impl IntoView {
     view! {
         <h1>"Welcome to the shop!"</h1>
         <AppNav/>
-        <control_panel::ProductControlView/>
+        // <control_panel::ProductControlView/>
     }
 }
 
