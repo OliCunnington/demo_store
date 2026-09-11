@@ -46,6 +46,7 @@ fn ProductRow(p: Product) -> impl IntoView {
     }
 }
 
+#[component]
 pub fn ProductExpanded() -> impl IntoView {
     view!{
         <p>"Placeholder"</p>

@@ -46,7 +46,7 @@ pub fn App() -> impl IntoView {
                 <Routes fallback=|| "Page not found.".into_view()>
                     <Route path=StaticSegment("/") view=HomePage/>
                     <Route path=StaticSegment("/store") view=StorePage/>
-                    <ParentRoute path=StaticSegment("/control_panel") view=ControlPage>
+                    <ParentRoute path=path!("/control_panel") view=ControlPage>
                         <Route path=path!(":id") view=control_panel::ProductExpanded />
                         // <Route path=path!("/*any") view=|| view! { <h1>"Not Found"</h1> }/>
                     </ParentRoute>
