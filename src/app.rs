@@ -45,12 +45,12 @@ pub fn App() -> impl IntoView {
                 <Routes fallback=|| "Page not found.".into_view()>
                     <Route path=path!("/") view=HomePage/>
                     <Route path=path!("/store") view=StorePage/>
-                    <ParentRoute path=path!("/control_panel") view=ControlPage>
-                        <Route path=path!(":id") view=control_panel::ProductExpanded />
-                        // <Route path=path!("/*any") view=|| view! { <h1>"Not Found"</h1> }/>
-                        <Route path=path!("") view=|| view! { <h1>"Not Found"</h1> }/>
-                    </ParentRoute>
-                    <Route path=path!("/*any") view=|| view! { <h1>"Not Found"</h1> }/>
+                    // <ParentRoute path=path!("/control_panel") view=ControlPage>
+                    //     <Route path=path!(":id") view=control_panel::ProductExpanded />
+                    //     // <Route path=path!("/*any") view=|| view! { <h1>"Not Found"</h1> }/>
+                    //     // <Route path=path!("") view=|| view! { <h1>"Not Found"</h1> }/>
+                    // </ParentRoute>
+                    <Route path=path!("/control_panel") view=ControlPage/>
                 </Routes>
             </main>
         </Router>
