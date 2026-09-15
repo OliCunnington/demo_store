@@ -9,3 +9,55 @@ body {
   grid-template-columns: repeat(3, 1fr);
   gap: 10px; /* Optional: adds space between items */
 }
+
+.prod_left{
+  align-items: start;
+}
+
+.prod_right{
+  align-items: end;
+}
+
+nav > a {
+  padding: 14px 16px;
+  text-align: center;
+  color: white;
+  background-color: black;
+}
+
+nav > a:hover {
+  background-color: white;
+  color: black;
+}
+
+ul {
+  list-style: none;
+}
+
+li > details {
+  display: block;
+  padding: 0px;
+  margin-bottom: 1px;
+  background-color: whitesmoke;
+  color: black;
+  border: 1px solid black;
+  border-radius: 3px;
+}
+
+li > details:hover {
+  background-color: white;
+}
+
+li > details > div {
+  display: inline-flex;
+  justify-content: space-between;
+}
+
+button {
+    display: block;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+}
+

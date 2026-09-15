@@ -22,26 +22,43 @@ fn ProductRow(p: Product) -> impl IntoView {
     // let selected = use_context::<ReadSignal<String>>();
     view!{
         <li>
-            <a href={move || 
-                if id().unwrap_or_default() == val {
-                    val.clone() + "/.."
-                } else {
-                    val.clone()
-                }
-            }>
-                <div class="prod_row">
-                    <p>{p.name}</p>
-                    <p>{p.stock}</p>
-                    <p>{p.price}</p>
-                    // need buttons... 
+            // <a href={move || 
+            //     if id().unwrap_or_default() == val {
+            //         val.clone() + "/.."
+            //     } else {
+            //         val.clone()
+            //     }
+            // }>
+                // <div class="prod_row">
+                //     <p>{p.name}</p>
+                //     <p>{p.stock}</p>
+                //     <p>{p.price}</p>
+                //     // need buttons... 
+                // </div>
+            // </a>
+            // <Show
+            //     when=move || { id().unwrap_or_default() == p.key.clone() }
+            //     fallback= || view! {}
+            // >
+            //     <Outlet/>
+            // </Show>
+            <details>
+                <summary>{p.name.clone()}</summary>
+                <div class="prod_details">
+                    <div class="prod_left">
+                        <p>{p.name}</p>
+                        <p>{p.stock}</p>
+                        <p>{p.price}</p>
+                        <p>{p.description}</p>
+                    </div>
+                    <div class="prod_right">
+                        <button>"Edit"</button>
+                        <button>"Edit"</button>
+                        <button>"Edit"</button>
+                        <button>"Edit"</button>
+                    </div>
                 </div>
-            </a>
-            <Show
-                when=move || { id().unwrap_or_default() == p.key.clone() }
-                fallback= || view! {}
-            >
-                <Outlet/>
-            </Show>
+            </details>
         </li>
     }
 }
