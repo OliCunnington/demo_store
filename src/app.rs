@@ -87,10 +87,24 @@ fn ControlPage() -> impl IntoView {
 
 #[component]
 fn AppNav() -> impl IntoView {
+    let (value, set_value) = create_signal("/pkg/demo_store.css".to_string());
     view!{
         <nav id="app_nav">
             <a href="/store">"Store"</a>
             <a href="/control_panel">"Control Panel"</a>
         </nav>
+
+        <select name="css_selection"
+            prop:value=move || value.get()
+            on:change= move |ev| {
+                let new_value: String = ev.target().unwrap().value_of().to_js_string().as_string().unwrap_or_default();//.value_of();
+                set_value.set(new_value);
+            }
+        >
+            <option value="/pkg/demo_store.css">"main"</option>
+            <option value="/test.css">"test"</option>
+        </select>
+
+        <p>"Selected value: " {value}</p>
     }
 }
