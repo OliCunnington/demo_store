@@ -88,6 +88,7 @@ fn ControlPage() -> impl IntoView {
 #[component]
 fn AppNav() -> impl IntoView {
     let (value, set_value) = create_signal("/pkg/demo_store.css".to_string());
+
     view!{
         <nav id="app_nav">
             <a href="/store">"Store"</a>
@@ -96,8 +97,8 @@ fn AppNav() -> impl IntoView {
 
         <select name="css_selection"
             prop:value=move || value.get()
-            on:change= move |ev| {
-                let new_value: String = ev.target().unwrap().value_of().to_js_string().as_string().unwrap_or_default();//.value_of();
+            on:change:target= move |ev| {
+                let new_value: String = ev.target().value(); //.value_of().to_js_string().as_string().unwrap_or_default();//.value_of();
                 set_value.set(new_value);
             }
         >
