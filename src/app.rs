@@ -30,11 +30,18 @@ pub fn shell(options: LeptosOptions) -> impl IntoView {
 pub fn App() -> impl IntoView {
     // Provides context that manages stylesheets, titles, meta tags, etc.
     provide_meta_context();
-
+    let (value, set_value) = create_signal("/pkg/demo_store.css".to_string());
+    provide_context((value, set_value));
     view! {
         // injects a stylesheet into the document <head>
         // id=leptos means cargo-leptos will hot-reload this stylesheet
-        <Stylesheet id="leptos" href="/pkg/demo_store.css"/>
+        // <Stylesheet id="leptos" href={move || value.get()}/>
+        // move if?
+        {move || if *value.get() ==  *"/pkg/demo_store.css" {
+            view! { <Stylesheet id="leptos" href="/pkg/demo_store.css" /> }.into_view()
+        } else {
+            view! { <Stylesheet id="leptos" href="/test.css" /> }.into_view()
+        }}
 
         // sets the document title
         <Title text="Welcome to the shop"/>
@@ -87,7 +94,8 @@ fn ControlPage() -> impl IntoView {
 
 #[component]
 fn AppNav() -> impl IntoView {
-    let (value, set_value) = create_signal("/pkg/demo_store.css".to_string());
+    
+    let (value, set_value) = expect_context::<(ReadSignal<String>, WriteSignal<String>)>();
 
     view!{
         <nav id="app_nav">
