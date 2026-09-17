@@ -30,17 +30,28 @@ pub fn shell(options: LeptosOptions) -> impl IntoView {
 pub fn App() -> impl IntoView {
     // Provides context that manages stylesheets, titles, meta tags, etc.
     provide_meta_context();
-    let (value, set_value) = create_signal("/pkg/demo_store.css".to_string());
+    let (value, set_value) = create_signal(0);
     provide_context((value, set_value));
     view! {
         // injects a stylesheet into the document <head>
         // id=leptos means cargo-leptos will hot-reload this stylesheet
         // <Stylesheet id="leptos" href={move || value.get()}/>
         // move if?
-        {move || if *value.get() ==  *"/pkg/demo_store.css" {
-            view! { <Stylesheet id="leptos" href="/pkg/demo_store.css" /> }.into_view()
-        } else {
-            view! { <Stylesheet id="leptos" href="/test.css" /> }.into_view()
+        {move || 
+        // if *value.get() ==  *"/pkg/demo_store.css" {
+        //     view! { <Stylesheet id="leptos" href="/pkg/demo_store.css" /> }.into_view()
+        // } else {
+        //     view! { <Stylesheet id="leptos" href="/test.css" /> }.into_view()
+        // }}
+
+        match value.get() {
+         0  => view! { <Stylesheet id="leptos" href="/pkg/demo_store.css" /> }.into_view(),
+         1  => view! { <Stylesheet id="leptos" href="/test.css" /> }.into_view(),
+         2  => view! { <Stylesheet id="leptos" href="/list.css" /> }.into_view(),
+         3  => view! { <Stylesheet id="leptos" href="/grid.css" /> }.into_view(),
+         4  => view! { <Stylesheet id="leptos" href="/holographic.css" /> }.into_view(),
+         5  => view! { <Stylesheet id="leptos" href="/rotating_cube.css" /> }.into_view(),
+         _  => view! { <Stylesheet id="leptos" href="/pkg/demo_store.css" /> }.into_view()
         }}
 
         // sets the document title
@@ -95,7 +106,7 @@ fn ControlPage() -> impl IntoView {
 #[component]
 fn AppNav() -> impl IntoView {
     
-    let (value, set_value) = expect_context::<(ReadSignal<String>, WriteSignal<String>)>();
+    let (value, set_value) = expect_context::<(ReadSignal<i32>, WriteSignal<i32>)>();
 
     view!{
         <nav id="app_nav">
@@ -106,14 +117,18 @@ fn AppNav() -> impl IntoView {
         <select name="css_selection"
             prop:value=move || value.get()
             on:change:target= move |ev| {
-                let new_value: String = ev.target().value(); //.value_of().to_js_string().as_string().unwrap_or_default();//.value_of();
+                let new_value: i32 = ev.target().value().parse().unwrap(); //.value_of().to_js_string().as_string().unwrap_or_default();//.value_of();
                 set_value.set(new_value);
             }
         >
-            <option value="/pkg/demo_store.css">"main"</option>
-            <option value="/test.css">"test"</option>
+            <option value=0 >"main"</option>
+            <option value=1 >"test"</option>
+            <option value=2 >"list"</option>
+            <option value=3 >"grid"</option>
+            <option value=4 >"holo (card)"</option>
+            <option value=5 >"box (card)"</option>
         </select>
 
-        <p>"Selected value: " {value}</p>
+        // <p>"Selected value: " {value.get().to_string()}</p>
     }
 }

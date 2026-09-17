@@ -15,11 +15,12 @@ struct Product {
 fn ProductCard(p: Product) -> impl IntoView {
     view!{
         <a class="prod_card" href="store/".to_string()+{&p.key.clone()}>
-            <p>{p.name}</p>
-            <p>{p.description}</p>
-            <p>{p.price}</p>
-            <p>"- 0 +"</p>
-            <p>{p.stock}</p>
+            <p class="face front">{p.name}</p>
+            <p class="face back">{p.description}</p>
+            <p class="face right">{p.price}</p>
+            <p class="face left">"- 0 +"</p>
+            <p class="face top">{p.stock}</p>
+            <p class="face bottom">"..."</p>
         </a>
     }
 }
