@@ -5,9 +5,10 @@
 } */
 
 ul {
-    min-height: 100vh;
-    display: flex;
-    flex-wrap: wrap;
+    /* min-height: 100vh; */
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px; 
     justify-content: center;
     align-items: center;
     background-color: #242424;
@@ -21,7 +22,8 @@ li {
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
-  height: 100vh;
+  /* height: 100vh; */
+  margin: 15px;
   background: #000;
 }
 

@@ -1,6 +1,25 @@
+body {
+	font-family: sans-serif;
+	text-align: center;
+  background: #000;
+}
+
+nav > a {
+  padding: 14px 16px;
+  text-align: center;
+  color: white;
+  background-color: black;
+}
+
+nav > a:hover {
+  background-color: white;
+  color: black;
+}
+
 ul {
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px; 
   justify-content: center;
   align-items: center;
   height: 100vh;
@@ -18,6 +37,7 @@ li>a {
   position: relative;
   overflow: hidden;
   border-radius: 15px;
+  margin: 15px;
   transition: all 0.5s ease;
 }
 
@@ -26,6 +46,10 @@ li>a>p:first-child {
   font-size: 2rem;
   position: relative;
   z-index: 2;
+}
+
+li>a>p{
+    display: block;
 }
 
 li>a::before {
