@@ -11,7 +11,7 @@ ul {
     gap: 10px; 
     justify-content: center;
     align-items: center;
-    background-color: #242424;
+    background-color: #000;
     color: #fff;
     font-family: Arial, sans-serif;
     perspective: 1000px;

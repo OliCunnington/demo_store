@@ -45,19 +45,19 @@ fn ProductRow(p: Product) -> impl IntoView {
             <details>
                 <summary>{p.name.clone()}</summary>
                 <div class="prod_details">
-                    <div class="prod_left">
-                        <p>{p.name}</p>
-                        <p>{p.stock}</p>
-                        <p>{p.price}</p>
-                        <p>{p.description}</p>
-                    </div>
-                    <div class="prod_right">
-                        <button>"Edit"</button>
-                        <button>"Edit"</button>
-                        <button>"Edit"</button>
-                        <button>"Edit"</button>
-                    </div>
+                // <div class="prod_left">
+                    <p>{p.name}</p>
+                    <p>{p.stock}</p>
+                    <p>{p.price}</p>
+                    <p>{p.description}</p>
                 </div>
+                //     <div class="prod_right">
+                //         <button>"Edit"</button>
+                //         <button>"Edit"</button>
+                //         <button>"Edit"</button>
+                //         <button>"Edit"</button>
+                //     </div>
+                // </div>
             </details>
         </li>
     }
