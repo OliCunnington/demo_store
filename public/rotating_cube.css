@@ -3,6 +3,23 @@
     padding: 0;
     box-sizing: border-box;
 } */
+body {
+	font-family: sans-serif;
+	text-align: center;
+	color: red;
+}
+
+nav > a {
+  padding: 14px 16px;
+  text-align: center;
+  color: white;
+  background-color: black;
+}
+
+nav > a:hover {
+  background-color: white;
+  color: black;
+}
 
 ul {
     /* min-height: 100vh; */
