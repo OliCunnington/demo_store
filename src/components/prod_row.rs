@@ -8,3 +8,5 @@ pub fn ProductRow() -> fn IntoView {
         <div>
     }
 }
+
+// want a line with name & basic info, action buttons on right
