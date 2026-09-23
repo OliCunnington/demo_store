@@ -3,7 +3,7 @@ use leptops::prelude::*;
 #[component]
 pub fn SearchContainer() -> impl IntoView {
     view!{
-        <div class="prod_row">
+        <div class="search_container">
             <p>"Placeholder"<p>
         <div>
     }
