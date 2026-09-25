@@ -12,3 +12,7 @@ pub fn SearchContainer() -> impl IntoView {
 // should probably take component as arg
 //  populate list... data and comp?
 //  index or something for searching??
+
+// border around children
+// labeled columns
+// decorated rows

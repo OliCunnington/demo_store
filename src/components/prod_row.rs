@@ -10,3 +10,7 @@ pub fn ProductRow() -> fn IntoView {
 }
 
 // want a line with name & basic info, action buttons on right
+// view, edit, delete
+
+// modal
+//  uneditable and editable fields
