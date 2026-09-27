@@ -14,3 +14,5 @@ pub fn ProductRow() -> fn IntoView {
 
 // modal
 //  uneditable and editable fields
+
+// svg or https://rust-ui.com/icons??
