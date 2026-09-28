@@ -7,6 +7,7 @@ use leptos_router::{
 
 use crate::storefront::product_cards;
 use crate::control_panel::control_panel;
+use crate::components;
 
 pub fn shell(options: LeptosOptions) -> impl IntoView {
     view! {
@@ -80,6 +81,7 @@ pub fn App() -> impl IntoView {
 fn HomePage() -> impl IntoView {
     view! {
         <h1>"Welcome to the shop!"</h1>
+        <components::prod_row::ProductRow />
         <AppNav/>
         // <control_panel::ProductControlView/>
     }
