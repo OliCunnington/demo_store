@@ -5,6 +5,10 @@ pub fn SearchContainer() -> impl IntoView {
     view!{
         <div class="search_container">
             <p>"Placeholder"<p>
+            <label for="searchBox">
+                <img src="/icons/search-magnifying-glass-svgrepo-com.svg" alt="Search" width="24" height="24"/>
+                <input type="text" id="searchBox"/>
+            </label>
         <div>
     }
 }

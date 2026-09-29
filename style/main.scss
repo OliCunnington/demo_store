@@ -54,10 +54,17 @@ li > details > div {
 }
 
 button {
-    display: block;
-    margin-block-start: 1em;
-    margin-block-end: 1em;
-    margin-inline-start: 0px;
-    margin-inline-end: 0px;
+  display: block;
+  margin-block-start: 1em;
+  margin-block-end: 1em;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
 }
 
+.prod_row {
+  display: inline-block;
+}
+
+.prod_row > p {
+  display: inline-block;
+}
